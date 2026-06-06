@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCC School - Excellence in Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d5016;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        .logo span {
+            background: #f0c649;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            animation: slideInRight 0.6s ease-out;
+            align-items: center;
+        }
+
+        nav a {
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0c649;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #2d5016;
+            border: 2px solid #2d5016;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #2d5016;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            padding: 4rem 5%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-content {
+            flex: 1;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-label {
+            font-size: 0.9rem;
+            color: #f0c649;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero h1 .gold {
+            color: #f0c649;
+        }
+
+        .hero .subtitle {
+            font-size: 2rem;
+            color: #2d5016;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #2d5016;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1f3610;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2d5016;
+            border: 2px solid #2d5016;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .hero-image-bg {
+            width: 300px;
+            height: 300px;
+            background: #f0c649;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image-bg img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .skills-badge {
+            position: absolute;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #2d5016;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .skills-badge.top-right {
+            top: 20%;
+            right: -10%;
+        }
+
+        .skills-badge.bottom-left {
+            bottom: 10%;
+            left: -5%;
+            background: #f0c649;
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-label {
+            color: #f0c649;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
+            color: #2d5016;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .section h2 .gold {
+            color: #f0c649;
+        }
+
+        .section-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: left;
+            color: #666;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Bar */
+        .skills-bar {
+            background: linear-gradient(135deg, #f0c649, #ffd700);
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .skill-item {
+            background: white;
+            color: #2d5016;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            border-color: #2d5016;
+            background: #f0c649;
+        }
+
+        /* Vision Section */
+        .vision {
+            background: white;
+        }
+
+        .vision h2 {
+            color: #2d5016;
+        }
+
+        /* Mission Section */
+        .mission {
+            background: #2d5016;
+            color: white;
+            min-height: 60vh;
+            padding: 5rem;
+        }
+
+        .mission .section-label {
+            color: #f0c649;
+        }
+
+        .mission h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission h2 .gold {
+            color: #f0c649;
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .mission-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .mission-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(240, 198, 73, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #f0c649;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #f0c649;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .mission-btn {
+            margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Principles Section */
+        .principles {
+            background: white;
+        }
+
+        .principles h2 {
+            color: #2d5016;
+            margin-bottom: 3rem;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .principle-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .principle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #f0c649;
+        }
+
+        .principle-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .principle-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2d5016;
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        .principle-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+            animation: slideInUp 0.6s ease-out 0.1s both;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5016;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 5%;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                padding: 2rem 5%;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 3rem 5%;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-description {
+                font-size: 0.95rem;
+            }
+
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission {
+                padding: 3rem 5%;
+            }
+
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-bg {
+                width: 250px;
+                height: 250px;
+            }
+
+            .skills-badge {
+                position: static;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span>S</span>
+            SCC School
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#principles">Principles</a></li>
+            <button class="contact-btn">Contact Us</button>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-label">🎓 Welcome</p>
+            <h1>SCC School of <span class="gold">Excellence</span></h1>
+            <p class="subtitle">Empowering Future Leaders</p>
+            <p class="hero-description">
+                Experience world-class education that nurtures academic excellence, character development, and lifelong learning. Our commitment is to transform young minds into responsible global citizens ready to make a positive impact on the world.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">📋 Explore Programs</button>
+                <button class="btn btn-secondary">📞 Get in Touch</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-wrapper">
+                <div class="hero-image-bg">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="50" fill="url(#grad1)"/>
+                        <circle cx="50" cy="30" r="12" fill="white"/>
+                        <path d="M 35 50 Q 50 60 65 50" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M 40 50 L 40 75 M 60 50 L 60 75" stroke="white" stroke-width="3"/>
+                    </svg>
+                </div>
+                <span class="skills-badge top-right">School Profile</span>
+                <span class="skills-badge bottom-left">Since 1990</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Bar -->
+    <section style="background: white; padding: 0; min-height: auto; margin: -2rem 5% 0; position: relative; z-index: 10;">
+        <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+            <div class="skills-bar">
+                <div class="skill-item">📚 Academic Excellence</div>
+                <div class="skill-item">🎨 Character Development</div>
+                <div class="skill-item">🌍 Global Perspective</div>
+                <div class="skill-item">💡 Critical Thinking</div>
+                <div class="skill-item">🤝 Leadership Skills</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section vision" id="vision">
+        <div class="section-content">
+            <p class="section-label">— Vision</p>
+            <h2>Our <span class="gold">Vision</span></h2>
+            <p class="section-description">
+                To be a leading institution of educational excellence that empowers students with knowledge, critical thinking, and moral values. We envision a community where every student discovers their potential, pursues their dreams, and becomes a responsible global citizen ready to make a positive impact on the world.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section mission" id="mission">
+        <div class="section-content">
+            <p class="section-label">— About Us</p>
+            <h2>Who is <span class="gold">SCC School?</span></h2>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <p style="margin-bottom: 1rem;">
+                        Our mission is to provide a holistic and inclusive education that nurtures academic excellence, develops essential life skills, and cultivates strong character. We are committed to creating an inspiring learning environment where students are challenged to think creatively, collaborate effectively, and embrace lifelong learning.
+                    </p>
+                    <p>
+                        Through dedicated teaching, innovative pedagogy, and strong partnerships with families and community, we prepare students for success in an ever-changing world.
+                    </p>
+                    <button class="btn btn-primary mission-btn">📥 Download Prospectus ➤</button>
+                </div>
+                <div class="mission-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Students Enrolled</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Expert Faculty</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="section principles" id="principles">
+        <div class="section-content">
+            <p class="section-label">— Core Values</p>
+            <h2>Our Core <span class="gold">Principles</span></h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">🎯</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in every endeavor, setting high standards and continuously improving to achieve our best.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🤝</div>
+                    <h3>Integrity</h3>
+                    <p>We uphold honesty, fairness, and transparency in all our actions and relationships with others.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🌍</div>
+                    <h3>Inclusivity</h3>
+                    <p>We embrace diversity and create a welcoming community where every individual is valued and respected.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">💡</div>
+                    <h3>Innovation</h3>
+                    <p>We encourage creative thinking and embrace new ideas to provide modern, relevant education.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🌱</div>
+                    <h3>Growth</h3>
+                    <p>We foster continuous personal and academic growth, encouraging students to overcome challenges and reach their potential.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">❤️</div>
+                    <h3>Compassion</h3>
+                    <p>We cultivate empathy and caring attitudes, promoting kindness and social responsibility in our community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 SCC School of Excellence. All rights reserved. | Empowering Future Leaders</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact button
+        document.querySelector('.contact-btn').addEventListener('click', function() {
+            alert('Thank you for your interest! Please email us at contact@sccschool.edu');
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section, .principle-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Skill items hover animation
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.skill-item').forEach(i => i.style.opacity = '0.6');
+                this.style.opacity = '1';
+            });
+        });
+    </script>
+</body>
+</html>
